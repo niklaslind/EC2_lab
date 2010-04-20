@@ -40,12 +40,16 @@ unzip /tmp/ec2-api-tools.zip -d $EC2_HOME/..
 
 #--------------------------------------------------------------------------------
 
-# download AWS-keys:
+# download and extract AWS-keys:
 
-pk-B2NCLKAPSNPIIQC2ADSPWXWVB33G73LJ.pem
+
+cd $EC2_LAB_HOME/keys
+wget host/labkeys.tar
+tar -xf labkeys.tar
+
+ls $EC2_LAB_HOME/keys
 cert-B2NCLKAPSNPIIQC2ADSPWXWVB33G73LJ.pem
-
-to $EC2_LAB_HOME/keys
+pk-B2NCLKAPSNPIIQC2ADSPWXWVB33G73LJ.pem
 
 #--------------------------------------------------------------------------------
 
