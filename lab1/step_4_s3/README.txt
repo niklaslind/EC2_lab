@@ -54,6 +54,49 @@ BUCKET_NAME=<myname>.s3lab.valtech.se
 #--------------------------------------------------------------------------------
 
 
+
+#--------------------------------------------------------------------------------
+### ACL and Browser access  ###
+#--------------------------------------------------------------------------------
+
+# use s3tools above to create a bucket with some items in it
+./s3mkdir $BUCKET_NAME
+./s3put $BUCKET_NAME/mystuff /tmp/minfil.txt
+
+
+# Access bucket in browser:
+http://$BUCKET_NAME.s3.amazonaws.com/mystuff
+example: 
+http://prep.s3lab.valtech.se.s3.amazonaws.com/mystuff # Response = access denied
+
+
+curl --head $BUCKET_NAME.s3.amazonaws.com/minfil.txt #Response = forbidden
+
+
+#set acl=public-read
+./aws put "x-amz-acl: public-read" $BUCKET_NAME minfil.txt 
+
+
+curl --head $BUCKET_NAME.s3.amazonaws.com/minfil.txt #OK!!
+
+#Try Browser:
+http://$BUCKET_NAME.s3.amazonaws.com
+#--------------------------------------------------------------------------------
+
+
+#--------------------------------------------------------------------------------
+###  Other cool stuff ###
+#--------------------------------------------------------------------------------
+
+# Set cache header
+./aws put "x-amz-acl: public-read" "Cache-Control: off" $BUCKET_NAME minfil.txt 
+
+# View and edit ACL
+./aws --xml get $BUCKET_NAME?acl > acl.xml
+./aws put $BUCKET_NAME?acl  acl.xml
+#--------------------------------------------------------------------------------
+
+
 #--------------------------------------------------------------------------------
 ### s3curl ###
 # Another alternative
