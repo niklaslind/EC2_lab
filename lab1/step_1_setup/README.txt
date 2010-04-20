@@ -1,5 +1,7 @@
 
 
+# Installation intructions for Valtech EC2 labs
+
 
 #--------------------------------------------------------------------------------
 # Get lab source from github
