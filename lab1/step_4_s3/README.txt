@@ -31,8 +31,8 @@ cd $S3_TOOL
 curl timkay.com/aws/aws -o aws
 perl aws --install
 
-echo "AKIAIKPO2V4B4NHTRXGQ
-pFMZSCFadJYUut16IhqvGTT8X2TeAnLLXu1KC+ma" > ~/.awssecret
+echo "XXXX
+YYYY" > ~/.awssecret
 
 #--------------------------------------------------------------------------------
 
