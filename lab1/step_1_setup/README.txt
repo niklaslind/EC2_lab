@@ -3,18 +3,18 @@
 
 #--------------------------------------------------------------------------------
 # Get lab source from github
-#EC2_LAB_HOME=path to where you will check out the lab
 
-cd $EC2_LAB_HOME
 git clone git@github.com:niklaslind/EC2_lab.git
+
+
 
 #--------------------------------------------------------------------------------
 
 # edit and read lab-env-settings
 
-vi $EC2_LAB_HOME/lab1/step_1_setup/setenv.sh  #EC2_LAB_HOME=path to where you will check out the lab
+vi EC2_lab/lab1/step_1_setup/setenv.sh  #EC2_LAB_HOME=<path to where you checked out the lab>/EC2_lab
 
-source $EC2_LAB_HOME/lab1/step_1_setup/setenv.sh
+source EC2_lab/lab1/step_1_setup/setenv.sh
 
 #--------------------------------------------------------------------------------
 
@@ -35,7 +35,7 @@ wget "http://www.amazon.com/gp/redirect.html/ref=aws_rc_ec2tools?location=http:/
 
 #Extract tools to $EC2_HOME/..
 
-mkdir $EC2_HOME/..
+mkdir -p $EC2_HOME
 unzip /tmp/ec2-api-tools.zip -d $EC2_HOME/..
 
 #--------------------------------------------------------------------------------
