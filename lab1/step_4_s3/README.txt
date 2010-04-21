@@ -40,17 +40,17 @@ cat ~/.awssecret
 
 BUCKET_NAME=<myname>.s3lab.valtech.se
 
-./s3mkdir $BUCKET_NAME
+s3mkdir $BUCKET_NAME
 
-./s3put $BUCKET_NAME/mystuff /tmp/minfil.txt
+s3put $BUCKET_NAME/mystuff /tmp/minfil.txt
 
-./s3ls $BUCKET_NAME
+s3ls $BUCKET_NAME
 
-./s3get $BUCKET_NAME/mystuff
+s3get $BUCKET_NAME/mystuff
 
-./s3delete $BUCKET_NAME/mystuff
+s3delete $BUCKET_NAME/mystuff
 
-./s3delete $BUCKET_NAME
+s3delete $BUCKET_NAME
 #--------------------------------------------------------------------------------
 
 
@@ -114,4 +114,41 @@ http://$BUCKET_NAME.s3.amazonaws.com
 # manage accounts: create new account "valtech" with keys from ~/.awssecret
 # Have fun!
 #--------------------------------------------------------------------------------
+
+
+
+
+#================================================================================
+
+# Simpe Storage Service (S3)
+
+## Design requirements:
+
+    * Scalable
+    * Reliable: with 99.99% availability. 
+    * Fast: Server-side latency must be insignificant relative to Internet latency.
+    * Inexpensive: 
+    * Simple:
+
+## 
+
+- skriv och läs obegränsat antal dataobjekt (1b -5Gb styck)
+- unik nyckel per objekt, organiseras i "buckets"
+- behöriget (public, private, rights for specific users) per dataobjekt
+- HTTP enda protokoll idag. Bittorrent för stora filer, minska kostnader. API: REST-style+SOAP.
+- S3 PUT & COPY sparar redundant på flera noder innan SUCCESS returneras
+- checksummor används internt för att upptäcka och reparera skador
+- allt versionshanteras. Du kan alltid hämta ut tidigare versioner
+- Accessloggar per dataobjekt
+
+## Buckets
+
+Naming conventions
+
+   1. Use 3 to 63 characters.
+   2. Use only lower case letters (at least one), numbers, ‘.’ and ‘-’.
+   3. Don’t start or end the bucket name with ‘.’ and don’t follow or precede a ‘.’ with a ‘-’.
+
+Access <bucketname>.s3.amazonaws.com
+
 
