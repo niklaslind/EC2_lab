@@ -31,8 +31,8 @@ cd $S3_TOOL
 curl timkay.com/aws/aws -o aws
 perl aws --install
 
-echo "XXXX
-YYYY" > ~/.awssecret
+# check that the key is installed from step 1
+cat ~/.awssecret
 
 #--------------------------------------------------------------------------------
 

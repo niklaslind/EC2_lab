@@ -44,6 +44,16 @@ unzip /tmp/ec2-api-tools.zip -d $EC2_HOME/..
 
 # download and extract AWS-keys:
 
+# Download EC2_labkeys.tar 
+# from https://intranet.valtech.se/groups/valtech/events/labb-ec2-amazon-elastic-compute-cloud/
+# to /tmp
+
+cd /tmp
+tar -xf EC2_labkeys.tar 
+cp labkeys/pk-B2NCLKAPSNPIIQC2ADSPWXWVB33G73LJ.pem $EC2_LAB_HOME/keys
+cp labkeys/cert-B2NCLKAPSNPIIQC2ADSPWXWVB33G73LJ.pem $EC2_LAB_HOME/keys
+cp labkeys/.awssecret ~
+
 
 cd $EC2_LAB_HOME/keys
 wget host/labkeys.tar
