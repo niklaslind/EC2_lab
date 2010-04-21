@@ -2,7 +2,7 @@
 # regitering DNS: valtech.isa-geek.net:8080
 
 # Run CI-instance
-ec2-run-instances ami-a798b3d3 -f ./run_on_instance/install_ci_base.sh -k ec2_valtech_keypair -g demo
+./start_ci.sh
 
 # it takes a while to configure everything...
 
@@ -28,26 +28,4 @@ Save
 Trigger build
 
 # Should work now, but takes a while (first usage of maven etc)
-
-------------------------
-
-# Bundle running instance
--------------------------
-TODO document how-to.....
-
-Try out: an s3-based AMI (with configured hudson-server as above)
-
-IMAGE	ami-d9765cad
-
-ec2-run-instances ami-d9765cad -k ec2_valtech_keypair -g demo
-
-#There is no deamon for running hudson on that server, so:
-ssh into the instance
-cd /opt/hudson/
-java -jar hudson.war &
-
-Goto (in browser): http://HOST_NAME:8080  
-# Should be preconfigured with "Hello World" as above
-
-
 

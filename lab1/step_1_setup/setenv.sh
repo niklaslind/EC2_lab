@@ -1,6 +1,6 @@
 
 
-export EC2_LAB_HOME=/tmp/lab/EC2_lab
+export EC2_LAB_HOME=/tmp/ec2-lab/EC2_lab
 export EC2_HOME=~/.ec2-tmp/ec2-api-tools-1.3-46266/
 
 export PATH=$EC2_HOME/bin:$PATH
