@@ -2,7 +2,7 @@
 
 
 #------- Update this, lab-settings  -------
-export EC2_LAB_HOME=<path-to-lab>/EC2_lab
+export EC2_LAB_HOME=/tmp/s3/EC2_lab
 
 
 

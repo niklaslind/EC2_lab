@@ -31,6 +31,8 @@ cd $S3_TOOL
 curl timkay.com/aws/aws -o aws
 perl aws --install
 
+chmod 600 ~/.awssecret
+
 # check that the key is installed from step 1
 cat ~/.awssecret
 
@@ -60,8 +62,8 @@ s3delete $BUCKET_NAME
 #--------------------------------------------------------------------------------
 
 # use s3tools above to create a bucket with some items in it
-./s3mkdir $BUCKET_NAME
-./s3put $BUCKET_NAME/mystuff /tmp/minfil.txt
+s3mkdir $BUCKET_NAME
+s3put $BUCKET_NAME/mystuff /tmp/minfil.txt
 
 
 # Access bucket in browser:
@@ -74,7 +76,7 @@ curl --head $BUCKET_NAME.s3.amazonaws.com/minfil.txt #Response = forbidden
 
 
 #set acl=public-read
-./aws put "x-amz-acl: public-read" $BUCKET_NAME minfil.txt 
+aws put "x-amz-acl: public-read" $BUCKET_NAME minfil.txt 
 
 
 curl --head $BUCKET_NAME.s3.amazonaws.com/minfil.txt #OK!!
@@ -89,11 +91,11 @@ http://$BUCKET_NAME.s3.amazonaws.com
 #--------------------------------------------------------------------------------
 
 # Set cache header
-./aws put "x-amz-acl: public-read" "Cache-Control: off" $BUCKET_NAME minfil.txt 
+aws put "x-amz-acl: public-read" "Cache-Control: off" $BUCKET_NAME minfil.txt 
 
 # View and edit ACL
-./aws --xml get $BUCKET_NAME?acl > acl.xml
-./aws put $BUCKET_NAME?acl  acl.xml
+aws --xml get $BUCKET_NAME?acl > acl.xml
+aws put $BUCKET_NAME?acl  acl.xml
 #--------------------------------------------------------------------------------
 
 
